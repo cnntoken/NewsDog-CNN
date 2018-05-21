@@ -1,0 +1,6 @@
+include ':colorful', ':database', ':dogvideolib', ':gifdecoder', ':imageslider', ':facebook_interface', ':facebook_nullobject', ':facebook_sdk_impl', ':shumengsdk', ':shumengsdk_empty', ':thirdpart_sdk', ':thirdpart_sdk_empty', ':facebookad_empty', ':facebookad',
+        ':pagerindicator', ':sidebar',
+        ':flowlayout-lib', ':volleytestsupport', ':leakfortest', ':tinydancer', ':ptrrecyclerview', ':bottom_navigation_bar'
+include ':android_imageviewer'
+include ':newsDog'
+include ':facebook_master'

@@ -1,0 +1,24 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.newsdog.fbsdk">
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+        <!-- facebook相关 -->
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="FacebookActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            tools:replace="android:theme" />
+
+        <!-- 后面那个id代表什么?, 目前为 app id, 有待查明 -->
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider${fb_app_id}"
+            android:exported="true" />
+
+    </application>
+
+</manifest>

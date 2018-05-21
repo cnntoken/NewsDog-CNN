@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+
+// 统一配置文件,避免多版本类库的问题
+def config = rootProject.ext.appConfig      // 应用配置
+def libs = rootProject.ext.libraries        // 库的配置
+
+android {
+
+    compileSdkVersion config.compileVersion
+    buildToolsVersion config.buildToolsVersion
+
+    // 默认配置
+    defaultConfig {
+        minSdkVersion config.minSdk
+        targetSdkVersion config.targetSdk
+        versionCode config.versionCode
+        versionName config.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile project(':facebook_interface')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile "com.android.support:appcompat-v7:${libs.appcompatVersion}"
+    compile project(':facebook_master')
+}
