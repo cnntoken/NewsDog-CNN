@@ -64,4 +64,6 @@ public interface FacebookCallback<RESULT> {
      * @param error The error that occurred
      */
     public void onError(FacebookException error);
+
+    public void onLog(FacebookLogInfo log);
 }

@@ -6,4 +6,5 @@ package com.newsdog.facebook;
 public interface LoginListener {
     void onStart();
     void onComplete(int stCode, User aUser);
+    void onLog();
 }

@@ -22,4 +22,6 @@ public interface FacebookSocial {
     boolean useIntentShare();
 
     void detach();
+
+    void onLog();
 }
