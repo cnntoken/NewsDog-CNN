@@ -43,8 +43,27 @@ public final class StorageUtils {
             }
         }
     }
+
+
+    private static String generateLogFileName() {
+        String fileName = sFormatter.format(new Date()) + "_leak.txt";
+        if (isExistSdCard()) {
+            String path = Environment.getExternalStorageDirectory().getPath();
+            path = path + File.separator + LeakCanaryForTest.sAppPackageName + "/leaks/";
+            File dir = new File(path);
+            if (!isClear) {
+                isClear = true;
+                deleteDirectory(dir);
+            }
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            fileName = path + fileName;
+        }
+        return fileName;
+    }
+
     /**
-     * 删除目录
      *
      * @param directory
      * @return
