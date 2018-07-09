@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+
+def config = rootProject.ext.appConfig      // 应用配置
+def libs = rootProject.ext.libraries        // 库的配置
+
+android {
+    compileSdkVersion config.compileVersion
+    buildToolsVersion config.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 21
+    }
+
+    lintOptions {
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+//    compile 'com.android.support:appcompat-v7:22.2.1'
+
+    compile "com.android.support:appcompat-v7:${libs.appcompatVersion}"
+}
