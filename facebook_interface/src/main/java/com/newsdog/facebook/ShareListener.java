@@ -6,3 +6,8 @@ package com.newsdog.facebook;
 public interface ShareListener {
     void onComplete(int code);
 }
+
+
+public interface PostListener {
+    void onComplete(int code);
+}
