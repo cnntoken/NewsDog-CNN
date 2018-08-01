@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="save">സൂക്ഷിക്കുക</string>
+    <string name="saved">saved: </string>
+    <string name="save_image_to">save image to : </string>
+</resources>
