@@ -51,4 +51,12 @@ public class SideBarTipsView extends RelativeLayout {
         mTipsView.setLayoutParams(layoutParams);
     }
 
+
+    public String getLastText(){
+        if (mTipsView == null){
+            return "not set yet";
+        }
+        return mTipsView.getText();
+    }
+
 }
