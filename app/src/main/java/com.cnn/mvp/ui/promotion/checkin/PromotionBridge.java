@@ -85,7 +85,17 @@ public class PromotionBridge extends BaseBridge {
         }
     }
 
+    public void onJsCheckIn(final JSONObject param, final JsCallback callback) {
+        if (isActivityDetach() || isDetached() ) {
+            return;
+        }
+        PromotionToast.showToast(mActivityRef.get(), R.string.check_in, param.optInt("coin"));
+        PromotionGAEvent.logEvent(PromotionGAEvent.CHECKIN_SUCCESS);
+        EventBus.getDefault().post(param);
 
+        fireCallback(callback);
+    }
+	
     public void share(final JSONObject param, final JsCallback callback) {
         if (isDetached()) {
             return;
@@ -275,7 +285,20 @@ public class PromotionBridge extends BaseBridge {
     }
 
 
-
+	 /**
+     * @param param
+     * @param callback
+     */
+    public void readNews(final JSONObject param, final JsCallback callback) {
+        if (isDetached() || isActivityDetach()) {
+            return;
+        }
+        MainActivity activity = (MainActivity)mActivityRef.get() ;
+        activity.selectNavTab(0);
+        PromotionGAEvent.logEvent(PromotionGAEvent.CLICK_READ_NEWS);
+        fireCallback(callback);
+    }
+	
     /**
      * @param param
      * @param callback
