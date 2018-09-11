@@ -372,6 +372,24 @@ public class PromotionBridge extends BaseBridge {
             return object;
         }
     }
+	
+    public void showDialog(final JSONObject param, final JsCallback callback){
+        String actionType = param.optString("actionType");
+        String totalCount = param.optString("totalCount");
+        if (totalCount == null || "".equals(totalCount.trim()) || "null".equals(totalCount.trim())){
+            totalCount = "-1";
+        }
+        PromotionEvent event = null;
+        if ("ReadArticle".equals(actionType)){
+            event = PromotionEvent.createArticleRelatedDialogEvent(PromotionFragment.DIALOG_TYPE_READ_ARTICLE, Integer.valueOf(totalCount));
+        }else if ("Comment".equals(actionType)){
+            event = PromotionEvent.createArticleRelatedDialogEvent(PromotionFragment.DIALOG_TYPE_COMMENT, Integer.valueOf(totalCount));
+        }else if ("Like".equals(actionType)){
+            event = PromotionEvent.createArticleRelatedDialogEvent(PromotionFragment.DIALOG_TYPE_LIKE, Integer.valueOf(totalCount));
+        }
+        EventBus.getDefault().post(event);
+        fireCallback(callback);
+    }
 
     public void setRefreshPageWhenClickShareFlag(boolean refresh){
         refreshPageWhenClickShareFlag = refresh;
